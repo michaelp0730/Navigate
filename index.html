@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Navigate JS</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+    <div class="row">
+        <div id="single-menu-container" class="container" data-navigate="true" tabindex="1">
+            <ul class="menu">
+                <li class="current" data-menu="one">First menu item</li>
+                <li data-menu="two">Second menu item</li>
+                <li data-menu="three">Third menu item</li>
+                <li data-menu="four">Fourth menu item</li>
+                <li data-menu="five">Fifth menu item</li>
+                <li data-menu="six">Sixth menu item</li>
+                <li data-menu="seven">Seventh menu item</li>
+                <li data-menu="eight">Eighth menu item</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="double-menu-container" class="container" data-navigate="true" tabindex="1">
+            <ul class="menu double first-col">
+                <li class="current" data-menu="one">First menu item</li>
+                <li data-menu="two">Second menu item</li>
+                <li data-menu="three">Third menu item</li>
+                <li data-menu="four">Fourth menu item</li>
+                <li data-menu="five">Fifth menu item</li>
+                <li data-menu="six">Sixth menu item</li>
+                <li data-menu="seven">Seventh menu item</li>
+                <li data-menu="eight">Eighth menu item</li>
+            </ul>
+            <ul class="menu double second-col">
+                <li data-menu="nine">Ninth menu item</li>
+                <li data-menu="ten">Tenth menu item</li>
+                <li data-menu="eleven">Eleventh menu item</li>
+                <li data-menu="twelve">Twelfth menu item</li>
+                <li data-menu="thirteen">Thirteenth menu item</li>
+                <li data-menu="fourteen">Fourteenth menu item</li>
+                <li data-menu="fifteen">Fifteenth menu item</li>
+                <li data-menu="sixteen">Sixteenth menu item</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="triple-menu-container" class="container" data-navigate="true" tabindex="1">
+            <ul class="menu triple">
+                <li class="current" data-menu="one">First menu item</li>
+                <li data-menu="two">Second menu item</li>
+                <li data-menu="three">Third menu item</li>
+                <li data-menu="four">Fourth menu item</li>
+                <li data-menu="five">Fifth menu item</li>
+                <li data-menu="six">Sixth menu item</li>
+                <li data-menu="seven">Seventh menu item</li>
+                <li data-menu="eight">Eighth menu item</li>
+            </ul>
+            <ul class="menu triple">
+                <li data-menu="nine">Ninth menu item</li>
+                <li data-menu="ten">Tenth menu item</li>
+                <li data-menu="eleven">Eleventh menu item</li>
+                <li data-menu="twelve">Twelfth menu item</li>
+                <li data-menu="thirteen">Thirteenth menu item</li>
+                <li data-menu="fourteen">Fourteenth menu item</li>
+                <li data-menu="fifteen">Fifteenth menu item</li>
+                <li data-menu="sixteen">Sixteenth menu item</li>
+            </ul>
+            <ul class="menu triple">
+                <li data-menu="seventeen">Seventeenth menu item</li>
+                <li data-menu="eighteen">Eighteenth menu item</li>
+                <li data-menu="nineteen">Nineteenth menu item</li>
+                <li data-menu="twenty">Twentieth menu item</li>
+                <li data-menu="twenty-one">Twenty-first menu item</li>
+                <li data-menu="twenty-two">Twenty-second menu item</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/pubsub.js"></script>
+    <script src="js/Navigate.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('*[data-navigate="true"]').navigate({active: false});
+            //$('#single-menu-container').navigate({scrollable: true, active: true});
+            //$('#double-menu-container').navigate({scrollable: true, active: true});
+            $('#triple-menu-container').navigate({scrollable: true, active: true});
+        });
+    </script>
+</body>
+</html>

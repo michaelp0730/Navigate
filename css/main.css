@@ -1,0 +1,40 @@
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.container { padding: 0; }
+
+.menu, .menu.double, .menu.triple {
+    float: left;
+    border: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu { width: 100%; }
+.menu.double { width: 50%; }
+.menu.triple { width: 33.33%; }
+
+.menu li {
+    border-bottom: 1px solid #999;
+    padding: 10px;
+}
+
+.menu li:last-child { border-bottom: none; }
+
+.menu li.current { background-color: powderblue; }
+
+.menu.double:first-child li,
+.menu.triple:first-child li,
+.menu.triple:nth-child(2) li { border-right: 1px solid #999; }
+
+#single-menu-container, #double-menu-container, #triple-menu-container {
+    height: 165px;
+    border: 1px solid #999;
+    margin-top: 30px;
+    overflow: hidden;
+}
+
+#triple-menu-container ul:last-child li:last-child { border-bottom: 1px solid #999; }

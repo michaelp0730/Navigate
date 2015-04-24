@@ -1,0 +1,107 @@
+This plugin is meant for navigating web menus with arrow keys on keyboards,
+hand scanners, and custom keypads. The plugin listens for keydown events
+on any of the four arrow keys, as well as the enter key. When the enter
+key is pressed while a menu option is 'selected', meaning the DOM element
+has a class of 'current', the plugin will trigger a custom event called
+'menuItemSelected' along with data contained in a data attribute on that
+DOM element. The default name for the menu item's data attribute is
+'data-menu', however that name can be overridden either in the defaults
+object within Navigate.js, or in an object parameter within the
+.navigate() jQuery method. See examples below for more information.
+
+This plugin has two dependencies: jQuery, and pubsub.js.
+
+PubSub
+pubsub.js is included with this package in the js/ directory. This tiny
+plugin has a blessed license and is used in other production apps at
+Amazon for publishing, and subscribing to, custom events.
+
+
+DOM Structure
+Your menu should be built with either an ordered list <ol> or an
+unordered list <ul>. Each menu item is represented by an <li> tag.
+The menu item that is currently selected should have the class 'current'.
+The menu should be nested within a container element with the following
+properties: data-navigate="true" tabindex="1"
+If you're missing either of these properties the plugin will not work.
+In the examples below I use a <div> as the container element, but any
+block-level tag will work. You should also assign an ID to your
+container element so that it can easily be referenced in your JavaScript.
+
+
+--- OPTIONS ---
+
+active -
+The default active value is true. If this value is set to false on a
+DOM element, the plugin will not function on that DOM element. This is
+useful if you have multiple menus that use the Navigate plugin visible
+at the same time, but you only want to control one of them. Here is an
+example of how to disable all menus using the Navigate plugin, then
+specify one as active:
+$('*[data-navigate="true"]').navigate({active: false});
+$('#single-menu-container').navigate({active: true});
+
+
+scrollable -
+The default scrollable value is false. If you can see the entire menu
+(including all of its items) on screen, then leave this value set to
+false. If the menu container isn't tall enough to show all of the menu
+items, change this value to true. There are two ways to update this
+value: at the bottom of Navigate.js in the defaults object, or by calling:
+$('#foo').navigate({scrollable: true});
+
+
+listItemDataName -
+The default listItemDataName value is 'menu'. The purpose of this data
+attribute is to store data that should be published by the jQuery .trigger()
+method when the enter key is pressed on the active menu item. This value can
+be overridden either at the bottom of Navigate.js in the defaults object, or
+by calling: $('#foo').navigate({listItemDataName: 'foo'});
+Make sure the data attributes on your menu items match this value.
+
+
+
+--- EXAMPLES ---
+
+This is an example of a basic menu with a single column:
+<div id="single-menu-container" class="container" data-navigate="true" tabindex="1">
+    <ul class="menu">
+        <li class="current" data-menu="one">First menu item</li>
+        <li data-menu="two">Second menu item</li>
+        <li data-menu="three">Third menu item</li>
+        <li data-menu="four">Fourth menu item</li>
+    </ul>
+</div>
+
+<script>
+    $('#single-menu-container').navigate();
+</script>
+
+
+This is an example of a scrollable menu with two columns:
+<div id="double-menu-container" class="container" data-navigate="true" tabindex="1">
+    <ul class="menu double first-col">
+        <li class="current" data-menu="one">First menu item</li>
+        <li data-menu="two">Second menu item</li>
+        <li data-menu="three">Third menu item</li>
+        <li data-menu="four">Fourth menu item</li>
+        <li data-menu="five">Fifth menu item</li>
+        <li data-menu="six">Sixth menu item</li>
+        <li data-menu="seven">Seventh menu item</li>
+        <li data-menu="eight">Eighth menu item</li>
+    </ul>
+    <ul class="menu double second-col">
+        <li data-menu="nine">Ninth menu item</li>
+        <li data-menu="ten">Tenth menu item</li>
+        <li data-menu="eleven">Eleventh menu item</li>
+        <li data-menu="twelve">Twelfth menu item</li>
+        <li data-menu="thirteen">Thirteenth menu item</li>
+        <li data-menu="fourteen">Fourteenth menu item</li>
+        <li data-menu="fifteen">Fifteenth menu item</li>
+        <li data-menu="sixteen">Sixteenth menu item</li>
+    </ul>
+</div>
+
+<script>
+    $('#double-menu-container').navigate({scrollable: true});
+</script>

@@ -1,0 +1,11 @@
+<div id="problem-menu-body" class="problem-menu-body" data-enable="multilist">
+var $menu = $('.packing-options-container').multilist(),
+$menu.multilist('enable');
+
+// KeyMappings.js
+KEY_TO_EVENT[KEY.KEYBOARD_LEFT] = EVENT.LEFT;
+KEY_TO_EVENT[KEY.KEYBOARD_RIGHT] = EVENT.RIGHT;
+KEY_TO_EVENT[KEY.KEYBOARD_UP] = EVENT.UP;
+KEY_TO_EVENT[KEY.KEYPAD_UP] = EVENT.UP;
+KEY_TO_EVENT[KEY.KEYBOARD_DOWN] = EVENT.DOWN;
+KEY_TO_EVENT[KEY.KEYPAD_DOWN] = EVENT.DOWN;
